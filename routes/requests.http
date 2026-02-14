@@ -1,0 +1,140 @@
+### rora servidor online 
+http://localhost:3000/
+
+### rota usuario
+GET http://localhost:3000/api/users
+
+
+### rota  de cadastro usuario 
+POST http://localhost:3000/api/users/register
+Content-Type: application/json
+
+{
+  "name": "João10 Teste",
+  "email": "joao10@teste.com",
+  "password": "923456",
+  "role": "user"
+}
+
+### login usuario 
+POST http://localhost:3000/api/users/login
+Content-Type: application/json
+
+{
+  "email": "joao10@teste.com",
+  "password": "923456"
+}
+
+###rota protegida token
+get http://localhost:3000/api/users/profile
+Authorization: Bearer 
+
+### rota usuario chama corrida 
+post http://localhost:3000/api/rides/create
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjQsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzcwOTI4NzQ5LCJleHAiOjE3NzEwMTUxNDl9.CEBlfp2y92p57i7Zmb0MudPfkKDBLX10JphhdAngNew
+Content-Type: application/json
+
+{
+  "pickup_location": "av brasil",
+  "dropoff_location": "rua 10",
+  "distance_km": 20,
+  "duration_min": 40
+}
+
+### rota historico de corridas do usuario
+GET http://localhost:3000/api/rides/user/history
+Authorization: Bearer 
+
+### cancela corrida como usuario
+POST http://localhost:3000/api/rides/cancel/user/1
+Authorization: Bearer 
+
+### rota avalia motorista *
+POST http://localhost:3000/api/rides/9/rate
+Authorization: bearer 
+Content-Type: application/json
+
+{ 
+  "rating":5,
+  "comment": "motorista top de mais "
+}
+
+
+### rota ver nota do motorista 
+GET http://localhost:3000/api/rides/driver/1/rating
+
+
+### bloqueia cancel usuario (se tiver em start)
+POST http://localhost:3000/api/rides/cancel/user/17
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjQsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzcwODQyMDIxLCJleHAiOjE3NzA5Mjg0MjF9.ZdN_T391xWSBKiqBZ7GLRiHFk9S0iVcNCWtefVwlhMU
+
+
+
+###################################################
+
+### Teste de cadastro motorista
+POST http://localhost:3000/api/drivers/register
+Content-Type: application/json
+
+{
+  "name": "jackson1 motorista",
+  "email": "jackson1 @teste.com",
+  "password": "240277",
+  "license_number":"CNH723456",
+  "vehicle_model":"fiat punto",
+  "vehicle_plate":"ABC8D43"
+}
+
+### login motorista 
+POST http://localhost:3000/api/drivers/login
+Content-Type: application/json
+
+{
+  "email": "carlos2@teste.com",
+  "password": "323456"
+}
+
+### rota lista corridas pendentes motorista
+GET http://localhost:3000/api/rides/pending
+Authorization: Bearer 
+Content-Type: application/json
+
+
+### motorista aceita corrida
+POST http://localhost:3000/api/rides/accept/28
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sZSI6ImRyaXZlciIsImlhdCI6MTc3MDk5MDkxOSwiZXhwIjoxNzcwOTk0NTE5fQ.tCBBPc5sInnF4jD4m3eiYvb5X6BLj3FEgTiNzklEOlI
+
+
+### rota motorista chegou 
+PUT http://localhost:3000/api/rides/28/arrived
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImRyaXZlciIsImlhdCI6MTc3MDkyOTA1MywiZXhwIjoxNzcwOTMyNjUzfQ.Fi1hjpeIkysGNyCyzf1nJ4WO5RTymrtn-G3GYyUL_oA
+### rota motorista inicia corrida 
+PUT http://localhost:3000/api/rides/28/start
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImRyaXZlciIsImlhdCI6MTc3MDkyOTA1MywiZXhwIjoxNzcwOTMyNjUzfQ.Fi1hjpeIkysGNyCyzf1nJ4WO5RTymrtn-G3GYyUL_oA
+Content-Type: application/json
+
+### motorista finaliza corrida 
+POST http://localhost:3000/api/rides/finish/28
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sZSI6ImRyaXZlciIsImlhdCI6MTc3MDk5MDkxOSwiZXhwIjoxNzcwOTk0NTE5fQ.tCBBPc5sInnF4jD4m3eiYvb5X6BLj3FEgTiNzklEOlI
+Content-Type: application/json
+
+### teste ver saldo do motorista 
+GET http://localhost:3000/api/drivers/wallet
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sZSI6ImRyaXZlciIsImlhdCI6MTc3MDk5MDkxOSwiZXhwIjoxNzcwOTk0NTE5fQ.tCBBPc5sInnF4jD4m3eiYvb5X6BLj3FEgTiNzklEOlI
+
+### motorista cancela corrida 
+POST http://localhost:3000/api/rides/cancel/driver/6
+Authorization: Bearer
+
+### rota ver nota do motorista 
+GET http://localhost:3000/api/rides/driver/9/rating
+Authorization: bearer
+
+### bloqueia cancel motorista (se tiver em start)
+POST http://localhost:3000/api/rides/cancel/driver/17
+Authorization: Bearer 
+
+
+### rota historico de corridas motorista 
+GET http://localhost:3000/api/rides/driver/history
+Authorization: Bearer 
