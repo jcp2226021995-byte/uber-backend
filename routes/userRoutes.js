@@ -8,10 +8,11 @@ const authenticateToken = require("../middleware/authMiddleware");
 // REGISTRAR USUÁRIO
 router.post("/register", async (req, res) => {
   try {
+    console.log("🚀 Requisição recebida no backend:", req.body);
     console.log("BODY:", req.body);
 
     const { name, email, password, role } = req.body;
-
+console.log("💾 Dados para cadastro:", { name, email, password, role });
     if (!name || !email || !password || !role) {
       return res.status(400).json("Preencha todos os campos");
     }
@@ -25,6 +26,7 @@ router.post("/register", async (req, res) => {
 
     res.json(result.rows[0]);
   } catch (err) {
+    console.error("❌ Erro interno no backend:", err);
     console.error("ERRO REGISTER:", err);
     res.status(500).json("Erro interno no servidor");
   }
