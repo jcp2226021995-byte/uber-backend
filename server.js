@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 require("dotenv").config();
-
+console.log("DB:", process.env.DB_HOST)
 // importa as rotas de usuários (agora descomenta!)
 const userRoutes = require('./routes/userRoutes');
 

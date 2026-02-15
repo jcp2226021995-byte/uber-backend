@@ -9,7 +9,7 @@ const authenticateToken = require("../middleware/authMiddleware");
 router.post("/register", async (req, res) => {
   try {
     console.log("🚀 Requisição recebida no backend:", req.body);
-    console.log("BODY:", req.body);
+    
 
     const { name, email, password, role } = req.body;
 console.log("💾 Dados para cadastro:", { name, email, password, role });
